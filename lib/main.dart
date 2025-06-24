@@ -1,3 +1,4 @@
+import 'package:bank_app/screens/home_screen.dart';
 import 'package:bank_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
-}
+}  

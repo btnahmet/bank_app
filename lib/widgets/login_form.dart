@@ -1,4 +1,5 @@
 import 'package:bank_app/assets/constants.dart';
+import 'package:bank_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -12,11 +13,22 @@ class _LoginFormState extends State<LoginForm> {
   final _tcController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void _handleLogin() {
-    final tc = _tcController.text.trim();
-    final password = _passwordController.text;
-    // Giriş işlemleri burada yapılacak
+ void _handleLogin() {
+  final tc = _tcController.text.trim();
+  final password = _passwordController.text;
+
+  // Demo amaçlı sabit değerle eşleşme
+  if (tc == "123456" && password == "1234") {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Geçersiz kimlik no veya şifre")),
+    );
   }
+}
 
   @override
   Widget build(BuildContext context) {

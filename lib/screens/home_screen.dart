@@ -46,7 +46,10 @@
 //           child: Column(
 //             crossAxisAlignment: CrossAxisAlignment.start,
 //             children: [
-//               SizedBox(height: height * 0.03),
+//               Container(
+//                 height: height * 0.15,
+//               ),
+//               SizedBox(height: height * 0.02),
 //               Padding(
 //                 padding: EdgeInsets.symmetric(horizontal: width * 0.05),
 //                 child: Column(
@@ -87,10 +90,9 @@
 //                     SizedBox(height: height * 0.008),
 //                     Container(
 //                       padding: EdgeInsets.symmetric(
-//                           horizontal: width * 0.025,
-//                           vertical: height * 0.005),
+//                           horizontal: width * 0.025, vertical: height * 0.005),
 //                       decoration: BoxDecoration(
-//                         color: Color.fromARGB(255, 173, 127, 42),
+//                         color: const Color.fromARGB(255, 173, 127, 42),
 //                         borderRadius: BorderRadius.circular(12),
 //                       ),
 //                       child: Text(
@@ -140,10 +142,13 @@
 //                               borderRadius: BorderRadius.circular(12),
 //                             ),
 //                           ),
-//                           child: Text("Hesaplarım",
-//                               style: TextStyle(fontSize: width * 0.035,
-
-//                               )),
+//                           child: Text(
+//                             "Hesaplarım",
+//                             style: TextStyle(
+//                                 fontSize: width * 0.04,
+//                                 color: Colors.white,
+//                                 fontWeight: FontWeight.bold),
+//                           ),
 //                         ),
 //                         ElevatedButton(
 //                           onPressed: () {},
@@ -156,29 +161,52 @@
 //                               borderRadius: BorderRadius.circular(12),
 //                             ),
 //                           ),
-//                           child: Text("Hesap Hareketleri",
-//                               style: TextStyle(fontSize: width * 0.035)),
+//                           child: Text(
+//                             "Hesap Hareketleri",
+//                             style: TextStyle(
+//                                 fontSize: width * 0.04,
+//                                 color: Colors.white,
+//                                 fontWeight: FontWeight.bold),
+//                           ),
 //                         ),
 //                       ],
 //                     ),
-//                     SizedBox(height: height * 0.03),
-//                     Text(
-//                       "Kısayollarım",
-//                       style: TextStyle(
-//                         fontSize: width * 0.045,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                     SizedBox(height: height * 0.015),
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                       children: [
-//                         _ShortcutItem(icon: Icons.account_balance, label: "Varlıklarım"),
-//                         _ShortcutItem(icon: Icons.history, label: "Son İşlemler"),
-//                         _ShortcutItem(icon: Icons.qr_code, label: "QR ile Para Çek"),
-//                         _ShortcutItem(icon: Icons.sync_alt, label: "Para Transferi"),
-//                       ],
-//                     ),
+
+//                     // 🔽 4 adet kısayollarım satırı
+//                     ...List.generate(4, (index) {
+//                       return Column(
+//                         crossAxisAlignment: CrossAxisAlignment.start,
+//                         children: [
+//                           SizedBox(height: height * 0.03),
+//                           Text(
+//                             "Kısayollarım",
+//                             style: TextStyle(
+//                               fontSize: width * 0.045,
+//                               fontWeight: FontWeight.bold,
+//                             ),
+//                           ),
+//                           SizedBox(height: height * 0.015),
+//                           Row(
+//                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                             children: [
+//                               _ShortcutItem(
+//                                   icon: Icons.account_balance,
+//                                   label: "Varlıklarım"),
+//                               _ShortcutItem(
+//                                   icon: Icons.history, label: "Son İşlemler"),
+//                               _ShortcutItem(
+//                                   icon: Icons.qr_code,
+//                                   label: "QR ile Para Çek"),
+//                               _ShortcutItem(
+//                                   icon: Icons.sync_alt,
+//                                   label: "Para Transferi"),
+//                             ],
+//                           ),
+//                         ],
+//                       );
+//                     }),
+
+//                     SizedBox(height: height * 0.04),
 //                   ],
 //                 ),
 //               ),
@@ -192,10 +220,13 @@
 //             child: Row(
 //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 //               children: [
-//                 _BottomBarItem(icon: Icons.home, label: "Ana Sayfa", onTap: () {}),
-//                 _BottomBarItem(icon: Icons.file_copy, label: "Ürünler", onTap: () {}),
-//                 _BottomBarItem(icon: Icons.swap_horiz, label: "Transfer", onTap: () {}),
-//                 _BottomBarItem(icon: Icons.menu, label: "Profil", onTap: () {}),
+//                 _BottomBarItem(
+//                     icon: Icons.home, label: "Ana Sayfa", onTap: () {}),
+//                 _BottomBarItem(
+//                     icon: Icons.file_copy, label: "Ürünler", onTap: () {}),
+//                 _BottomBarItem(
+//                     icon: Icons.swap_horiz, label: "İşlemler", onTap: () {}),
+//                 _BottomBarItem(icon: Icons.menu, label: "Tüm Menü", onTap: () {}),
 //               ],
 //             ),
 //           ),
@@ -248,7 +279,8 @@
 //   Widget build(BuildContext context) {
 //     final width = MediaQuery.of(context).size.width;
 //     final height = MediaQuery.of(context).size.height;
-//     return Expanded(
+//     return Flexible(
+//       flex: 1,
 //       child: Container(
 //         margin: EdgeInsets.symmetric(horizontal: width * 0.01),
 //         padding: EdgeInsets.symmetric(vertical: height * 0.018),
@@ -284,6 +316,7 @@
 //     );
 //   }
 // }
+import 'package:bank_app/screens/tum_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_app/assets/constants.dart';
 
@@ -292,9 +325,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
-    final height = size.height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
@@ -316,7 +348,7 @@ class HomeScreen extends StatelessWidget {
                   backgroundColor: Colors.white,
                   child: ClipOval(
                     child: Image.asset(
-                      'assets/images/profile_icon.png',
+                      'C:/Users/ahmet/flutterApp/bank_app/lib/assets/images/profil.png',
                       fit: BoxFit.cover,
                       width: width * 0.08,
                       height: width * 0.08,
@@ -332,10 +364,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 📌 AppBar altına boşluk
-              Container(
-                height: height * 0.15,
-              ),
+              Container(height: height * 0.15),
               SizedBox(height: height * 0.02),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.05),
@@ -379,7 +408,7 @@ class HomeScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: width * 0.025, vertical: height * 0.005),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 173, 127, 42),
+                        color: const Color.fromARGB(255, 173, 127, 42),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -480,6 +509,7 @@ class HomeScreen extends StatelessWidget {
                             icon: Icons.sync_alt, label: "Para Transferi"),
                       ],
                     ),
+                    SizedBox(height: height * 0.04),
                   ],
                 ),
               ),
@@ -499,7 +529,18 @@ class HomeScreen extends StatelessWidget {
                     icon: Icons.file_copy, label: "Ürünler", onTap: () {}),
                 _BottomBarItem(
                     icon: Icons.swap_horiz, label: "İşlemler", onTap: () {}),
-                _BottomBarItem(icon: Icons.menu, label: "Profil", onTap: () {}),
+                _BottomBarItem(
+                  icon: Icons.menu,
+                  label: "Tüm Menü",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const TumMenu(),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -552,7 +593,8 @@ class _ShortcutItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    return Expanded(
+    return Flexible(
+      flex: 1,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: width * 0.01),
         padding: EdgeInsets.symmetric(vertical: height * 0.018),

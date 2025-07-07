@@ -529,6 +529,8 @@ class HomeScreen extends StatelessWidget {
                     icon: Icons.file_copy, label: "Ürünler", onTap: () {}),
                 _BottomBarItem(
                     icon: Icons.swap_horiz, label: "İşlemler", onTap: () {}),
+                     _BottomBarItem(
+                    icon: Icons.file_download_done_outlined, label: "Başvurular", onTap: () {}),
                 _BottomBarItem(
                   icon: Icons.menu,
                   label: "Tüm Menü",

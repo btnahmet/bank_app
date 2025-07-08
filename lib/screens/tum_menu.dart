@@ -18,6 +18,7 @@ class _TumMenuState extends State<TumMenu> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             "Tüm Menü",
             style: TextStyle(fontSize: width * 0.05),
@@ -107,8 +108,7 @@ class _TumMenuState extends State<TumMenu> {
         onPressed: onPressed,
         child: Row(
           children: [
-            Icon(icon,
-                color: AppColors.primaryRed, size: width * 0.07),
+            Icon(icon, color: AppColors.primaryRed, size: width * 0.07),
             SizedBox(width: width * 0.03),
             Expanded(
               child: Text(
